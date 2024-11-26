@@ -16,3 +16,4 @@ use \App\Http\Controllers\AuthApiController;
 */
 
 Route::post('register', [AuthApiController::class, 'register']);
+Route::post('profile', [AuthApiController::class, 'me']);

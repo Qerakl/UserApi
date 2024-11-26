@@ -22,7 +22,7 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|min:3',
+            'gender' => 'required|in:male,female,other',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
             'password_confirmation' => 'required|string|min:4|same:password',
@@ -32,6 +32,10 @@ class RegisterUserRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'gender.required' => 'Поле "Пол" обязательно для заполнения.',
+            'gender.string' => 'Поле "Пол" должно быть строкой.',
+            'gender.in' => 'Поле "Пол" должно быть одним из следующих значений: male, female, other.',
+
             'name.required' => 'Поле "Имя" обязательно для заполнения.',
             'name.string' => 'Поле "Имя" должно быть строкой.',
             'name.max' => 'Поле "Имя" не должно превышать 255 символов.',
